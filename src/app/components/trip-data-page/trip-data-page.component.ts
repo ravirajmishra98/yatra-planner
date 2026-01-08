@@ -155,7 +155,7 @@ export class TripDataPageComponent implements OnInit {
     // Dynamically import the SDK to avoid Angular/TypeScript ESM issues
     const { GoogleGenerativeAI } = await import('@google/generative-ai');
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
     const result = await model.generateContent(prompt);
     // SDK returns response in a different structure
     let text = result?.response?.candidates?.[0]?.content?.parts?.[0]?.text || result?.response?.text || 'No response.';
