@@ -1,0 +1,118 @@
+
+.beautiful-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #fbe9e7 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 5.5rem;
+}
+
+.trip-form-card {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 2.5rem auto;
+  border-radius: 22px;
+  box-shadow: 0 6px 32px 0 rgba(255, 105, 135, 0.10);
+  padding: 2.2rem 1.5rem 2.5rem 1.5rem;
+  background: #fff;
+}
+
+.trip-form-title {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #ff4081;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin-bottom: 2.1rem;
+}
+.trip-form-title-icon {
+  color: #ff4081;
+  font-size: 2.1rem;
+}
+
+.trip-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.1rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.form-field {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.half-width {
+  min-width: 0;
+  max-width: 200px;
+}
+.full-width {
+  width: 100%;
+  min-width: 0;
+}
+
+.form-icon {
+  font-size: 1.1rem;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+/* Trip Type Icon Colors */
+.icon-solo { color: #ff4081; }
+.icon-group { color: #42a5f5; }
+.icon-family { color: #66bb6a; }
+.icon-couple { color: #f06292; }
+.icon-business { color: #ffa726; }
+/* Accommodation Icon Colors */
+.icon-hotel { color: #7e57c2; }
+.icon-hostel { color: #26a69a; }
+.icon-resort { color: #ffd600; }
+.icon-homestay { color: #8d6e63; }
+.icon-camping { color: #43a047; }
+.icon-apartment { color: #29b6f6; }
+/* Interests Icon Colors */
+.icon-attractions { color: #ffb300; }
+.icon-shopping { color: #ec407a; }
+.icon-religious { color: #8d6e63; }
+.icon-nature { color: #43a047; }
+.icon-adventure { color: #ab47bc; }
+.icon-food { color: #ff7043; }
+.icon-nightlife { color: #3949ab; }
+/* Label Colors */
+.label-solo { color: #ff4081; font-weight: 600; }
+.label-group { color: #42a5f5; font-weight: 600; }
+.label-family { color: #66bb6a; font-weight: 600; }
+.label-couple { color: #f06292; font-weight: 600; }
+.label-business { color: #ffa726; font-weight: 600; }
+.label-hotel { color: #7e57c2; font-weight: 600; }
+.label-hostel { color: #26a69a; font-weight: 600; }
+.label-resort { color: #ffd600; font-weight: 600; }
+.label-homestay { color: #8d6e63; font-weight: 600; }
+.label-camping { color: #43a047; font-weight: 600; }
+.label-apartment { color: #29b6f6; font-weight: 600; }
+.label-attractions { color: #ffb300; font-weight: 600; }
+.label-shopping { color: #ec407a; font-weight: 600; }
+.label-religious { color: #8d6e63; font-weight: 600; }
+.label-nature { color: #43a047; font-weight: 600; }
+.label-adventure { color: #ab47bc; font-weight: 600; }
+.label-food { color: #ff7043; font-weight: 600; }
+.label-nightlife { color: #3949ab; font-weight: 600; }
+.submit-btn {
+  width: 100%;
+  margin-top: 1.7rem;
+  font-size: 1.13rem;
+  background: linear-gradient(90deg, #ff80ab 0%, #ff4081 100%);
+  color: #fff;
+  min-height: 48px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  box-shadow: 0 2px 12px 0 rgba(255, 64, 129, 0.08);
+}

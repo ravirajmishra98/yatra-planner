@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="foodie-container">
+  <h2>Explore best food options</h2>
+  <form [formGroup]="foodieForm" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>City</mat-label>
+      <mat-select formControlName="city">
+        <mat-option *ngFor="let city of cities" [value]="city">{{ city }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Food Type</mat-label>
+      <mat-select formControlName="foodType">
+        <mat-option *ngFor="let type of foodTypes" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Veg/Non-Veg</mat-label>
+      <mat-select formControlName="veg">
+        <mat-option *ngFor="let v of vegOptions" [value]="v">{{ v }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!foodieForm.valid || loadingAI">
+      <span *ngIf="!loadingAI">Get Food Suggestions</span>
+      <span *ngIf="loadingAI">Loading...</span>
+    </button>
+  </form>
+</div>

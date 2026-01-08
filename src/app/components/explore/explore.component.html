@@ -1,0 +1,25 @@
+<div class="explore-container">
+  <app-navbar></app-navbar>
+  <!-- Removed Explore Destinations header and description as requested -->
+  <div class="explore-categories">
+    <div class="explore-cards">
+      <mat-card *ngFor="let trip of allTrips; let tripIdx = index" class="explore-card" [style.borderColor]="'#e0e0e0'">
+        <div *ngIf="trip.imageUrl" class="explore-card-img-col">
+          <img [src]="trip.imageUrl" alt="{{ trip.title }}" class="explore-card-img" loading="lazy" />
+        </div>
+        <div class="explore-card-content-col">
+          <div class="explore-card-title-large">{{ trip.title }}</div>
+          <div class="explore-card-activities">
+            <span class="explore-activity-pill" *ngFor="let interest of trip.interests">{{ interest }}</span>
+          </div>
+          <button mat-stroked-button color="primary" class="explore-show-btn" (click)="exploreTrip(trip, tripIdx, tripIdx)" [disabled]="loadingTripIdx === tripIdx">
+            <mat-icon *ngIf="loadingTripIdx !== tripIdx">travel_explore</mat-icon>
+            <mat-progress-spinner *ngIf="loadingTripIdx === tripIdx" diameter="20" mode="indeterminate"></mat-progress-spinner>
+            <span *ngIf="loadingTripIdx !== tripIdx">Show Plan</span>
+            <span *ngIf="loadingTripIdx === tripIdx">Loading...</span>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

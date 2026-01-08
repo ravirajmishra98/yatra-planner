@@ -1,0 +1,122 @@
+<div class="trip-data-container beautiful-bg">
+  <app-navbar></app-navbar>
+  <mat-card class="trip-form-card">
+    <h2 class="trip-form-title">
+      <mat-icon class="trip-form-title-icon">travel_explore</mat-icon>
+      Plan Your Trip
+    </h2>
+    <form [formGroup]="tripForm" (ngSubmit)="generateItinerary()" class="trip-form-fields">
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field half-width">
+          <mat-label>From</mat-label>
+          <input type="text" matInput [matAutocomplete]="autoFrom" formControlName="from" placeholder="Select city">
+          <mat-autocomplete #autoFrom="matAutocomplete" (optionSelected)="addCityFrom($event.option.value)">
+            <mat-option *ngFor="let city of filteredCitiesFrom" [value]="city">{{ city }}</mat-option>
+          </mat-autocomplete>
+          <mat-error *ngIf="tripForm.get('from')?.hasError('sameCity')">From and To cities cannot be the same.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field half-width">
+          <mat-label>To</mat-label>
+          <input type="text" matInput [matAutocomplete]="autoTo" formControlName="to" placeholder="Select city">
+          <mat-autocomplete #autoTo="matAutocomplete" (optionSelected)="addCityTo($event.option.value)">
+            <mat-option *ngFor="let city of filteredCitiesTo" [value]="city">{{ city }}</mat-option>
+          </mat-autocomplete>
+          <mat-error *ngIf="tripForm.get('to')?.hasError('sameCity')">From and To cities cannot be the same.</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>Date Range</mat-label>
+          <mat-date-range-input [rangePicker]="picker" [formGroup]="tripForm">
+            <input matStartDate placeholder="Start date" formControlName="dateRangeStart">
+            <input matEndDate placeholder="End date" formControlName="dateRangeEnd">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>Budget (INR)</mat-label>
+          <input matInput type="number" min="0" max="100000" formControlName="budget" placeholder="Budget">
+          <mat-hint>How much do you want to spend?</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field half-width">
+          <mat-label>Trip Type</mat-label>
+          <mat-select formControlName="tripType">
+            <mat-option *ngFor="let type of tripTypes" [value]="type">
+              <mat-icon class="form-icon" [ngClass]="{
+                'icon-solo': type === 'Solo',
+                'icon-group': type === 'Group',
+                'icon-family': type === 'Family',
+                'icon-couple': type === 'Couple',
+                'icon-business': type === 'Business'
+              }">{{ type === 'Solo' ? 'person' : type === 'Group' ? 'groups' : type === 'Family' ? 'family_restroom' : type === 'Couple' ? 'favorite' : 'work' }}</mat-icon>
+              <span [ngClass]="{
+                'label-solo': type === 'Solo',
+                'label-group': type === 'Group',
+                'label-family': type === 'Family',
+                'label-couple': type === 'Couple',
+                'label-business': type === 'Business'
+              }">{{ type }}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field half-width">
+          <mat-label>Accommodation</mat-label>
+          <mat-select formControlName="accommodation">
+            <mat-option *ngFor="let style of accommodationStyles" [value]="style">
+              <mat-icon class="form-icon" [ngClass]="{
+                'icon-hotel': style === 'Hotel',
+                'icon-hostel': style === 'Hostel',
+                'icon-resort': style === 'Resort',
+                'icon-homestay': style === 'Homestay',
+                'icon-camping': style === 'Camping',
+                'icon-apartment': style === 'Apartment'
+              }">{{ style === 'Hotel' ? 'hotel' : style === 'Hostel' ? 'meeting_room' : style === 'Resort' ? 'pool' : style === 'Homestay' ? 'home' : style === 'Camping' ? 'camping' : 'apartment' }}</mat-icon>
+              <span [ngClass]="{
+                'label-hotel': style === 'Hotel',
+                'label-hostel': style === 'Hostel',
+                'label-resort': style === 'Resort',
+                'label-homestay': style === 'Homestay',
+                'label-camping': style === 'Camping',
+                'label-apartment': style === 'Apartment'
+              }">{{ style }}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field full-width">
+          <mat-label>Interests</mat-label>
+          <mat-select formControlName="interests" multiple>
+            <mat-option *ngFor="let interest of interests" [value]="interest">
+              <mat-icon class="form-icon" [ngClass]="{
+                'icon-attractions': interest === 'Famous Attractions',
+                'icon-shopping': interest === 'Shopping',
+                'icon-religious': interest === 'Religious',
+                'icon-nature': interest === 'Nature',
+                'icon-adventure': interest === 'Adventure',
+                'icon-food': interest === 'Food',
+                'icon-nightlife': interest === 'Nightlife'
+              }">{{ interest === 'Famous Attractions' ? 'star' : interest === 'Shopping' ? 'shopping_bag' : interest === 'Religious' ? 'temple_hindu' : interest === 'Nature' ? 'park' : interest === 'Adventure' ? 'hiking' : interest === 'Food' ? 'restaurant' : 'nightlife' }}</mat-icon>
+              <span [ngClass]="{
+                'label-attractions': interest === 'Famous Attractions',
+                'label-shopping': interest === 'Shopping',
+                'label-religious': interest === 'Religious',
+                'label-nature': interest === 'Nature',
+                'label-adventure': interest === 'Adventure',
+                'label-food': interest === 'Food',
+                'label-nightlife': interest === 'Nightlife'
+              }">{{ interest }}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" type="submit" class="submit-btn">Generate Itinerary</button>
+    </form>
+    <app-response [response]="aiResponse" [loading]="loadingAI"></app-response>
+  </mat-card>
+</div>

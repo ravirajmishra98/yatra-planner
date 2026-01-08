@@ -1,0 +1,35 @@
+<div class="trip-data-container beautiful-bg">
+  <app-navbar></app-navbar>
+<div class="profile-page-container">
+  <div class="profile-card-modern">
+    <div class="profile-name" style="margin-top:2.5rem; text-align:center;">{{ name }}</div>
+    <div class="profile-details-list">
+      <div class="profile-detail-row">
+        <span class="profile-detail-label">Username</span>
+        <span class="profile-detail-value">{{ username }}</span>
+      </div>
+      <div class="profile-detail-row">
+        <span class="profile-detail-label">Password</span>
+        <span class="profile-detail-value">{{ password }}</span>
+      </div>
+      <form (ngSubmit)="changePassword()" #changePassForm="ngForm">
+        <div class="profile-detail-row">
+            <span class="profile-detail-label">Change Password</span>
+            <span class="profile-detail-value">
+                <input class="password-wrapper-input" name="newPassword" [(ngModel)]="newPassword" [type]="showNewPassword ? 'text' : 'password'" minlength="4" placeholder="New Password" required>
+            </span>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Update Password</button>
+      <div *ngIf="passwordChangeSuccess" class="success">Password updated!</div>
+      <div *ngIf="passwordChangeError" class="error">{{ passwordChangeError }}</div>
+    </form>
+    </div>
+    
+    <div class="profile-actions-list">
+      <div class="profile-action-row logout-row" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span class="profile-action-label">Log out</span>
+      </div>
+    </div>
+  </div>
+</div>

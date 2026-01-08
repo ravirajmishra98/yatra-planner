@@ -1,0 +1,52 @@
+.gem-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0.7rem;
+  object-fit: cover;
+  display: block;
+}
+.gem-card {
+  padding: 0;
+  overflow: hidden;
+}
+/* Match Trip Data Page styles */
+/* Add space for top and bottom navbars */
+.gems-response-container {
+  max-width: 520px;
+  margin: 5.5rem auto 5.5rem auto;
+  border-radius: 22px;
+  box-shadow: 0 6px 32px 0 rgba(255, 105, 135, 0.10);
+  padding: 2.2rem 1.5rem 2.5rem 1.5rem;
+  background: #fff;
+}
+h2 {
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-weight: 800;
+  color: #ff4081;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.gem-card {
+  background: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px #e3e3e3;
+  padding: 1.2rem 1rem;
+  margin-bottom: 1.2rem;
+}
+.gem-name {
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: #222;
+}
+.gem-desc {
+  color: #666;
+  font-size: 0.97rem;
+}
+.gem-location {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}

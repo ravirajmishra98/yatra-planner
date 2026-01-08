@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<div class="gems-container">
+  <h2>Discover Hidden Gems</h2>
+  <form [formGroup]="gemsForm" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>City</mat-label>
+      <mat-select formControlName="city">
+        <mat-option *ngFor="let city of cities" [value]="city">{{ city }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!gemsForm.valid || loadingAI">
+      <span *ngIf="!loadingAI">Find Hidden Gems</span>
+      <span *ngIf="loadingAI">Loading...</span>
+    </button>
+  </form>
+</div>
+<app-navbar></app-navbar>

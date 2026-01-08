@@ -1,0 +1,30 @@
+<app-navbar>
+  <div class="navbar-left">
+    <button mat-icon-button color="primary" (click)="goBack()" aria-label="Back">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+</app-navbar>
+<div class="foodie-response-container">
+  <h2>Top Food Suggestions</h2>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+  <div *ngIf="suggestions && suggestions.length">
+    <div class="food-suggestion-card" *ngFor="let s of suggestions">
+      <div class="food-suggestion-header">
+        <span class="food-place">{{ s.name }}</span>
+        <span class="food-type">{{ s.type }}</span>
+      </div>
+      <div class="food-dish">{{ s.dish }}</div>
+      <div class="food-desc">{{ s.desc }}</div>
+      <div *ngIf="s.location" class="food-map">
+        <a [href]="getMapsLink(s.name, s.location)" target="_blank" rel="noopener">
+          <img [src]="getStaticMapUrl(s)" alt="Map for {{ s.name }}" style="width:100%;max-width:320px;border-radius:8px;margin-top:0.5rem;" (error)="onMapImgError($event)" />
+          <span style="display:block;margin-top:0.3rem;color:#1976d2;font-size:0.97rem;">View on Google Maps</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!error && (!suggestions || !suggestions.length)">
+    <pre style="white-space: pre-wrap; color:#333; background:#f8f8f8; border-radius:8px; padding:1rem;">{{ aiResponse | json }}</pre>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="auth-container">
+  <img src="/Yatra.png" alt="YatraPlanner Logo" style="height:64px; margin:0 auto 1rem auto; display:block;" />
+  <div class="tagline">Plan your journeys with ease. Discover, explore, and enjoy with YatraPlanner!</div>
+    <h2>Login</h2>
+
+  <form (ngSubmit)="login()">
+    <label class="input-label" for="login-username"><span class="material-icons input-icon">person</span> Username</label>
+    <input id="login-username" [(ngModel)]="username" name="username" placeholder="Username" required />
+    <label class="input-label" for="login-password"><span class="material-icons input-icon">lock</span> Password</label>
+    <input id="login-password" [(ngModel)]="password" name="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password" required minlength="6" />
+
+    <button type="submit">Login</button>
+    <div *ngIf="accountCreated" class="success">Account created! Please log in.</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+  </form>
+  <div class="switch-link">
+    <button type="button" (click)="goToSignup()" style="background:none;border:none;color:#1976d2;text-decoration:underline;cursor:pointer;font:inherit;padding:0;">Don't have an account? Sign Up</button>
+  </div>
+</div>

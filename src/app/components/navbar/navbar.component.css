@@ -1,0 +1,220 @@
+/* Professional Modern Navbar */
+
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 120;
+  border-bottom: 1px solid #e8eef5;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+.navbar-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Sora', 'Poppins', Arial, sans-serif;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.top-navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.navbar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.navbar-link:hover {
+  background: rgba(0, 102, 204, 0.08);
+  color: #0066cc;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.12);
+}
+
+.navbar-link.active {
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  color: #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 102, 204, 0.3);
+  font-weight: 700;
+}
+
+.navbar-link .material-icons {
+  font-size: 1rem;
+}
+
+.profile-menu-desktop {
+  margin-left: 1.5rem;
+  border-left: 2px solid rgba(74, 222, 128, 0.2);
+  padding-left: 1.5rem;
+}
+
+.bottom-navbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 85px;
+  background: linear-gradient(180deg, #0f172a 0%, #1e3a5f 100%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  border-top: 2px solid rgba(74, 222, 128, 0.15);
+}
+
+body, .mat-typography {
+  padding-top: 75px;
+  padding-bottom: 85px;
+}
+
+@media (max-width: 768px) {
+  .top-navbar {
+    display: none;
+  }
+  body, .mat-typography {
+    padding-top: 0;
+  }
+  .bottom-navbar {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .bottom-navbar {
+    display: none;
+  }
+  body, .mat-typography {
+    padding-bottom: 0;
+  }
+  .top-navbar {
+    display: flex;
+  }
+}
+
+.bottom-navbar a, .bottom-navbar .profile-menu > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.85rem;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.bottom-navbar a:hover, .bottom-navbar .profile-menu > a:hover {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  transform: scale(1.12);
+}
+
+.bottom-navbar a.active, .bottom-navbar .profile-menu > a.active {
+  color: #0f172a;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  box-shadow: 0 4px 16px rgba(74, 222, 128, 0.3);
+  font-weight: 700;
+}
+
+.material-icons {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+  transition: transform 0.3s ease;
+}
+
+.bottom-navbar a:hover .material-icons {
+  transform: scale(1.2);
+}
+
+.profile-menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8c 100%);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  min-width: 160px;
+  padding: 0.8rem 0;
+  z-index: 200;
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.profile-menu:focus-within .profile-dropdown,
+.profile-menu:hover .profile-dropdown {
+  display: block;
+}
+
+.profile-dropdown a {
+  display: block;
+  padding: 0.9rem 1.4rem;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.profile-dropdown a:hover {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  padding-left: 1.6rem;
+}

@@ -1,0 +1,44 @@
+/* Match Trip Data Page styles */
+.foodie-response-container {
+  max-width: 420px;
+  margin: 5.5rem auto 5.5rem auto;
+  border-radius: 22px;
+  box-shadow: 0 6px 32px 0 rgba(255, 105, 135, 0.10);
+  padding: 2.2rem 1.5rem 2.5rem 1.5rem;
+  background: #fff;
+}
+h2 {
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-weight: 800;
+  color: #ff4081;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.food-suggestion-card {
+  background: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px #e3e3e3;
+  padding: 1.2rem 1rem;
+  margin-bottom: 1.2rem;
+}
+.food-suggestion-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: #222;
+}
+.food-type {
+  color: #00aa6c;
+  font-size: 0.98rem;
+}
+.food-dish {
+  font-size: 1.01rem;
+  color: #444;
+  margin: 0.5rem 0 0.2rem 0;
+}
+.food-desc {
+  color: #666;
+  font-size: 0.97rem;
+}

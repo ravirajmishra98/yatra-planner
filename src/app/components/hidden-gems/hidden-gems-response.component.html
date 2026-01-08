@@ -1,0 +1,33 @@
+<app-navbar>
+  <div class="navbar-left">
+    <button mat-icon-button color="primary" (click)="goBack()" aria-label="Back">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+</app-navbar>
+<div class="gems-response-container">
+  <h2>Hidden Gems in {{ city }}</h2>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+  <div *ngIf="suggestions && suggestions.length">
+    <div class="gem-card" *ngFor="let g of suggestions; let i = index">
+      <div *ngIf="gemImages[i] || g.image || g.img" class="gem-image">
+        <img [src]="gemImages[i] || g.image || g.img" alt="Image for {{ g.name }}" style="width:100%;max-width:320px;border-radius:8px;margin-bottom:0.7rem;object-fit:cover;" loading="lazy" />
+      </div>
+      <div class="gem-name">{{ g.name }}</div>
+      <div class="gem-desc">{{ g.desc || g.description }}</div>
+      <div *ngIf="g.location" class="gem-location">
+        <mat-icon style="vertical-align:middle;color:#1976d2;">place</mat-icon>
+        <span style="color:#1976d2;font-size:0.97rem;">{{ g.location }}</span>
+      </div>
+      <div *ngIf="g.location" class="gem-map">
+        <a [href]="getMapsLink(g.name, g.location)" target="_blank" rel="noopener">
+          <img [src]="getStaticMapUrl(g)" alt="Map for {{ g.name }}" style="width:100%;max-width:320px;border-radius:8px;margin-top:0.5rem;" (error)="onMapImgError($event)" />
+          <span style="display:block;margin-top:0.3rem;color:#1976d2;font-size:0.97rem;">View on Google Maps</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!error && (!suggestions || !suggestions.length)">
+    <pre style="white-space: pre-wrap; color:#333; background:#f8f8f8; border-radius:8px; padding:1rem;">{{ aiResponse | json }}</pre>
+  </div>
+</div>

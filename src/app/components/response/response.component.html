@@ -1,0 +1,72 @@
+<div class="response-page-container">
+  <app-navbar>
+    <div class="navbar-left">
+      <button mat-icon-button color="primary" (click)="goBack()" aria-label="Back">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+  </app-navbar>
+
+  <div class="itinerary-content-wrapper">
+    <ng-container *ngIf="parsedItinerary; else rawOrError">
+       <h2 class="itinerary-header">
+        <mat-icon style="vertical-align: middle; margin-right: 8px;">map</mat-icon>
+        Your Itinerary
+      </h2>
+      <mat-accordion multi>
+        <mat-expansion-panel *ngFor="let day of parsedItinerary.days; let i = index">
+         <mat-expansion-panel-header>
+  <mat-panel-title>
+    <mat-icon style="margin-right: 8px;">calendar_today</mat-icon>
+    Day {{ i + 1 }} <span *ngIf="day.date"> – {{ day.date | date: 'fullDate' }}</span>
+  </mat-panel-title>
+</mat-expansion-panel-header>
+
+
+          <div class="day-image-wrapper" *ngIf="dayImages && dayImages[i]">
+            <img [src]="dayImages[i]" alt="{{ day.title }}" class="day-image" loading="lazy" />
+          </div>
+
+          <div class="activities-list">
+            <mat-card class="activity-card" *ngFor="let activity of day.activities">
+              <div class="activity-header">
+                <mat-icon class="activity-time-icon">schedule</mat-icon>
+                <span class="activity-time">{{ activity.time }}</span>
+                <span class="activity-title">{{ activity.title }}</span>
+              </div>
+              <div class="activity-body">
+                <span class="activity-desc">{{ activity.description }}</span>
+              </div>
+            </mat-card>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-card class="budget-section">
+        <h4><mat-icon>account_balance_wallet</mat-icon> Budget Breakdown</h4>
+        <ul>
+          <li *ngFor="let b of parsedItinerary.budget">{{ b }}</li>
+        </ul>
+      </mat-card>
+
+      <mat-card class="tips-section tips-section-fixed">
+        <h4><mat-icon>tips_and_updates</mat-icon> Tips for Travelers</h4>
+        <ul>
+          <li *ngFor="let tip of parsedItinerary.tips">{{ tip }}</li>
+        </ul>
+      </mat-card>
+    </ng-container>
+  </div>
+
+  <ng-template #rawOrError>
+    <mat-card class="error-section" *ngIf="responseText && !parsedItinerary">
+      <h4><mat-icon color="warn">error</mat-icon> Unable to display itinerary</h4>
+      <div style="color:#b71c1c; margin-bottom: 1rem;">The AI did not return a valid itinerary in JSON format. Here is the raw response:</div>
+      <pre style="white-space: pre-wrap; color:#333; background:#f8f8f8; border-radius:8px; padding:1rem;">{{ responseText }}</pre>
+    </mat-card>
+    <mat-card class="error-section" *ngIf="!responseText">
+      <h4><mat-icon color="warn">error</mat-icon> No response received</h4>
+      <div style="color:#b71c1c;">No itinerary data is available to display.</div>
+    </mat-card>
+  </ng-template>
+</div>
